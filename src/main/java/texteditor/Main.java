@@ -16,7 +16,7 @@ public class Main extends JFrame implements ActionListener{
     //menu
     private JMenu menu_File,menu_Edit,menu_Help;
     //menu's menu
-    private JMenuItem item_new,item_open,item_save,item_exit;//file
+    private JMenuItem item_new,item_open,item_save,item_print,item_exit;//file
 
     private JMenuItem item_undo,item_cut,item_copy,item_stick;//edit
 
@@ -83,13 +83,13 @@ public class Main extends JFrame implements ActionListener{
         item_new = new JMenuItem("New");
         item_open = new JMenuItem("Open");
         item_save = new JMenuItem("Save");
-
+        item_print = new JMenuItem("Print");
 
         item_exit = new JMenuItem("Exit");
         menu_File.add(item_new);
         menu_File.add(item_open);
         menu_File.add(item_save);
-
+        menu_File.add(item_print);
 
         menu_File.add(item_exit);
         //File
@@ -135,7 +135,7 @@ public class Main extends JFrame implements ActionListener{
         item_new.addActionListener(this);
         item_open.addActionListener(this);
         item_save.addActionListener(this);
-
+        item_print.addActionListener(this);
 
         item_exit.addActionListener(this);
         item_undo.addActionListener(this);
@@ -156,7 +156,10 @@ public class Main extends JFrame implements ActionListener{
             new about_Window();
         }else if (e.getSource() == item_new) {
             new Main(); //new a new windows ，bug: close any sub-windows can alse let father windows closed
-        }else if (e.getSource() == item_exit) {
+        }else if (e.getSource() == item_print) {
+            PrintTest1 p = new PrintTest1();
+            p.setVisible(true);
+        } else if (e.getSource() == item_exit) {
             this.dispose();
         }else if (e.getSource() == item_open) {
             openFile();
