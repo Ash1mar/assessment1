@@ -18,7 +18,7 @@ public class Main extends JFrame implements ActionListener{
     //menu's menu
     private JMenuItem item_new,item_open,item_save,item_print,item_exit;//file
 
-    private JMenuItem item_undo,item_cut,item_copy,item_stick;//edit
+    private JMenuItem item_undo,item_cut,item_copy,item_stick,findRep;//edit
 
     private JMenuItem item_about;//help
 
@@ -100,13 +100,13 @@ public class Main extends JFrame implements ActionListener{
         item_cut = new JMenuItem("Cut");
         item_copy = new JMenuItem("Copy");
         item_stick = new JMenuItem("Paste");
-
+        findRep = new JMenuItem("Search");//search
 
         menu_Edit.add(item_undo);
         menu_Edit.add(item_cut);
         menu_Edit.add(item_copy);
         menu_Edit.add(item_stick);
-
+        menu_Edit.add(findRep);
         //Edit
 
         menu_Help = new JMenu("Help(H)");
@@ -144,9 +144,81 @@ public class Main extends JFrame implements ActionListener{
         item_stick.addActionListener(this);
 
         item_about.addActionListener(this);
-
+        findRep.addActionListener(this);
     }
+    class FindAndReplace extends JDialog implements ActionListener {// search
+        JLabel findLabel = new JLabel("Search content：");
+        JLabel repLabel = new JLabel("    Replace with：");
+        JTextField findTf = new JTextField(8);
+        JTextField repTf = new JTextField(8);
+        JButton findBtn = new JButton("Search");
+        JButton repBtn = new JButton("Replace");
+        JPanel findPn = new JPanel();
+        JPanel repPn = new JPanel();
+        //JTextArea textarea;
+        JTextPane textarea;
 
+        String text;
+        boolean flg = false;
+        int len;
+        int start = 0;
+        int k = 0;
+
+        public FindAndReplace(JTextPane textarea/*JTextArea textarea*/) {
+
+            this.textarea = textarea;
+
+            findPn.add(findLabel);
+            findPn.add(findTf);
+            findPn.add(findBtn);
+            repPn.add(repLabel);
+            repPn.add(repTf);
+            repPn.add(repBtn);
+            this.add(findPn);
+            this.add(repPn);
+
+            findBtn.addActionListener(this);
+            repBtn.addActionListener(this);
+
+            this.setTitle("Search and Replace");
+            this.setLayout(new GridLayout(2, 1));
+
+            this.pack();
+            this.setLocationRelativeTo(null);
+            this.setResizable(false);
+            this.setVisible(true);
+            this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        }
+
+        @SuppressWarnings("deprecation")
+        public void actionPerformed(ActionEvent e) {
+            String findText = findTf.getText();
+            String repText = repTf.getText();
+            text = textarea.getText();
+            if (e.getSource() == findBtn) {
+                findBtn.setLabel("Next one");
+                if (findText != null) {
+                    len = findText.length();
+                    start = text.indexOf(findText, k);
+                    k = start + len;
+                    textarea.select(start, start + len);
+                    flg = true;
+                    if (start == -1) {
+                        JOptionPane.showMessageDialog(null, "Find bottom！", "Hint", JOptionPane.INFORMATION_MESSAGE);
+                        start = 0;
+                        k = 0;
+                        flg = false;
+                    }
+                }
+            } else if (e.getSource() == repBtn) {
+                if (flg) {
+                    /*textarea.replaceRange(repText, start, start + len);*/
+                    textarea.replaceSelection(repText);
+                    flg = false;
+                }
+            }
+        }
+    }
     /**
      * listening action in all item of menu
      */
@@ -171,6 +243,8 @@ public class Main extends JFrame implements ActionListener{
             edit_text_area.copy();
         } else if (e.getSource() == item_stick) {
             edit_text_area.paste();
+        }else if (e.getSource() == findRep) {
+            new FindAndReplace(edit_text_area);
         }
     }
 
