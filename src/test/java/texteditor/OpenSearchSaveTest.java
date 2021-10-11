@@ -1,0 +1,128 @@
+package texteditor;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.AfterClass;
+import org.junit.jupiter.api.Test;
+import org.springframework.test.util.ReflectionTestUtils;
+
+import javax.swing.*;
+import java.io.*;
+import java.util.Scanner;
+
+class OpenSearchSaveTest {
+    public static void main(String[] args) {
+
+    }
+    @Test
+    public void open() throws IOException {
+        Main main = new Main();
+        String path = ".\\testfolder\\opentest.txt";
+        File filenew = new File(path);
+        if(!filenew.exists()){
+            filenew.getParentFile().mkdirs();
+        }
+        filenew.createNewFile();
+
+        // write
+        FileWriter fw = new FileWriter(filenew, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write("this is a little test");
+        bw.flush();
+        bw.close();
+        fw.close();
+
+        // read
+        FileReader fr = new FileReader((File) ReflectionTestUtils.invokeMethod(main,"openFile"));
+        BufferedReader br = new BufferedReader(fr);
+        String str = br.readLine();
+        br.close();
+        fr.close();
+
+        filenew.delete();
+
+        assertEquals(str,"this is a little test");
+
+    }
+
+    @Test
+    public void save() throws IOException {
+        Main main = new Main();
+        String path = ".\\testfolder\\testsave.txt";
+        File fileone = new File(path);
+        if(!fileone.exists()){
+            fileone.getParentFile().mkdirs();
+        }
+        fileone.createNewFile();
+
+        // write
+        FileWriter fw = new FileWriter(fileone, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write("this is a little test");
+        bw.flush();
+        bw.close();
+        fw.close();
+
+        FileReader fr = new FileReader(fileone);
+        BufferedReader br = new BufferedReader(fr);
+        String strexception = br.readLine();
+        br.close();
+        fr.close();
+
+
+
+        ReflectionTestUtils.invokeMethod(main,"openFile",null);
+        FileReader fre = new FileReader((File) ReflectionTestUtils.invokeMethod(main,"saveFile"));
+        BufferedReader bre = new BufferedReader(fre);
+        String stractually = bre.readLine();
+        bre.close();
+        fre.close();
+
+        fileone.delete();
+        //find and delete the txt you saved
+        ((File) ReflectionTestUtils.invokeMethod(main,"saveFile")).delete();
+
+
+
+        assertEquals(strexception,stractually);
+    }
+    @Test
+    public void search() throws IOException {
+        JTextPane area = new JTextPane();
+        Main main = new Main();
+        Main.FindAndReplace far = main.new FindAndReplace(area) ;
+        String path = ".\\testfolder\\SearchTest.txt";
+        File filenew = new File(path);
+        if(!filenew.exists()){
+            filenew.getParentFile().mkdirs();
+        }
+        filenew.createNewFile();
+
+        // write
+        FileWriter fw = new FileWriter(filenew, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write("this is a little test");
+        bw.flush();
+        bw.close();
+        fw.close();
+
+        // read
+        FileReader fr = new FileReader(filenew);
+        BufferedReader br = new BufferedReader(fr);
+        String str = br.readLine();
+        br.close();
+        fr.close();
+
+        String want = "a";
+        boolean result = str.contains(want);
+
+        ReflectionTestUtils.invokeMethod(main,"openFile");
+        boolean resultactually = ReflectionTestUtils.invokeMethod(far,"Search");
+
+        filenew.delete();
+
+        assertEquals(result,resultactually);
+
+    }
+}
+

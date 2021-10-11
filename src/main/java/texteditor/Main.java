@@ -7,8 +7,8 @@ import javax.swing.text.SimpleAttributeSet;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.io.*;
+import java.text.SimpleDateFormat;
 
 public class Main extends JFrame implements ActionListener{
 
@@ -51,11 +51,12 @@ public class Main extends JFrame implements ActionListener{
         initMenuBar();
         initEditArea();
         initListener();
-
+        SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String datetime = tempDate.format(new java.util.Date());
         this.setJMenuBar(menuBar);
         this.setSize(800,600);
         this.add(scroll_bar);
-        this.setTitle("Test Editor");
+        this.setTitle("Test Editor                  " + datetime);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -190,34 +191,47 @@ public class Main extends JFrame implements ActionListener{
             this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         }
 
-        @SuppressWarnings("deprecation")
-        public void actionPerformed(ActionEvent e) {
+        public boolean Search() {
             String findText = findTf.getText();
-            String repText = repTf.getText();
             text = textarea.getText();
-            if (e.getSource() == findBtn) {
-                findBtn.setLabel("Next one");
-                if (findText != null) {
-                    len = findText.length();
-                    start = text.indexOf(findText, k);
-                    k = start + len;
-                    textarea.select(start, start + len);
-                    flg = true;
-                    if (start == -1) {
-                        JOptionPane.showMessageDialog(null, "Find bottom！", "Hint", JOptionPane.INFORMATION_MESSAGE);
-                        start = 0;
-                        k = 0;
-                        flg = false;
-                    }
-                }
-            } else if (e.getSource() == repBtn) {
-                if (flg) {
-                    /*textarea.replaceRange(repText, start, start + len);*/
-                    textarea.replaceSelection(repText);
+            findBtn.setLabel("Next one");
+            if (findText != null) {
+                len = findText.length();
+                start = text.indexOf(findText, k);
+                k = start + len;
+                textarea.select(start, start + len);
+                flg = true;
+                if (start == -1) {
+                    JOptionPane.showMessageDialog(null, "Find bottom！", "Hint", JOptionPane.INFORMATION_MESSAGE);
+                    start = 0;
+                    k = 0;
                     flg = false;
                 }
             }
+            return flg;
         }
+
+        public boolean Replace() {
+            String findText = findTf.getText();
+            String repText = repTf.getText();
+            text = textarea.getText();
+            if (flg) {
+                /*textarea.replaceRange(repText, start, start + len);*/
+                textarea.replaceSelection(repText);
+                flg = false;
+            }
+            return flg;
+        }
+
+        @SuppressWarnings("deprecation")
+            public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == findBtn) {
+                Search();
+            }else if (e.getSource() == repBtn){
+                Replace();
+            }
+        }
+
     }
     /**
      * listening action in all item of menu
@@ -236,7 +250,7 @@ public class Main extends JFrame implements ActionListener{
         }else if (e.getSource() == item_exit) {
             this.dispose();
         }else if (e.getSource() == item_open) {
-            openFile();
+                openFile();
         }else if (e.getSource() == item_save) {
             saveFile();
         }else if (e.getSource() == item_cut) {
@@ -250,7 +264,7 @@ public class Main extends JFrame implements ActionListener{
         }
     }
 
-    private void saveFile() {
+    private File saveFile() {
         File file = null;
         int result ;
         fileChooser = new JFileChooser("C:\\");
@@ -270,14 +284,16 @@ public class Main extends JFrame implements ActionListener{
         }catch(IOException e) {
             e.printStackTrace();
         }
+        return file;
     }
     /**
      * when click the New item, run the JFileChooser dialog
      * deal with the file reading and writing
      */
-    private void openFile() {
+    private File openFile() {
         File file = null;
         int result ;
+        Document doc = null;
         fileChooser = new JFileChooser("C:\\");
         fileChooser.setApproveButtonToolTipText("OK"); // set the true text of the button Confirm.
         fileChooser.setDialogTitle("Open File"); // set title
@@ -285,6 +301,7 @@ public class Main extends JFrame implements ActionListener{
 
         if(result == JFileChooser.APPROVE_OPTION) {
             file = fileChooser.getSelectedFile(); // if click the confirm button，fil the direction of the file
+
         }
 
         if(file.isFile() && file.exists()) {
@@ -304,6 +321,7 @@ public class Main extends JFrame implements ActionListener{
                     catch (BadLocationException e){
                         e.printStackTrace();
                     }
+                    doc = docs;
                 }
 
                 reader.close(); // close the reader
@@ -315,6 +333,7 @@ public class Main extends JFrame implements ActionListener{
 
 
         }
+        return file;
     }
 
     /**
