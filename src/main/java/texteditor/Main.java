@@ -14,7 +14,7 @@ public class Main extends JFrame implements ActionListener{
 
     private JMenuBar menuBar;
     //menu
-    private JMenu menu_File,menu_Edit,menu_Help;
+    private JMenu menu_File,menu_Edit,menu_Help,menu_Format;
     //menu's menu
     private JMenuItem item_new,item_open,item_save,item_print,item_Highlight,item_exit;//file
 
@@ -22,6 +22,7 @@ public class Main extends JFrame implements ActionListener{
 
     private JMenuItem item_about;//help
 
+    private JMenuItem item_word_format;
     //
 
 
@@ -117,15 +118,17 @@ public class Main extends JFrame implements ActionListener{
         //Help
 
 
-
-
-
-
+        menu_Format = new JMenu("Format(O)");
+        menu_Format.setMnemonic('o');
+        item_word_format = new JMenuItem("Font(F)");
+        item_word_format.setAccelerator(KeyStroke.getKeyStroke('F',java.awt.Event.CTRL_MASK,false));//ctrl+f
+        menu_Format.add(item_word_format);
+        //Format
 
 
         menuBar.add(menu_File);
         menuBar.add(menu_Edit);
-
+        menuBar.add(menu_Format);
         menuBar.add(menu_Help);
     }
 
@@ -143,7 +146,7 @@ public class Main extends JFrame implements ActionListener{
         item_cut.addActionListener(this);
         item_copy.addActionListener(this);
         item_stick.addActionListener(this);
-
+        item_word_format.addActionListener(this);
         item_about.addActionListener(this);
         findRep.addActionListener(this);
     }
@@ -261,7 +264,10 @@ public class Main extends JFrame implements ActionListener{
             edit_text_area.paste();
         }else if (e.getSource() == findRep) {
             new FindAndReplace(edit_text_area);
+        }else if (e.getSource() == item_word_format) {
+            Format newFormat = new Format();
         }
+
     }
 
     public File saveNew() {
