@@ -33,7 +33,7 @@ class OpenSearchSaveTest {
         fw.close();
 
         // read
-        FileReader fr = new FileReader((File) ReflectionTestUtils.invokeMethod(main,"openFile"));
+        FileReader fr = new FileReader(main.openFile(filenew));
         BufferedReader br = new BufferedReader(fr);
         String str = br.readLine();
         br.close();
@@ -49,7 +49,9 @@ class OpenSearchSaveTest {
     public void save() throws IOException {
         Main main = new Main();
         String path = ".\\testfolder\\testsave.txt";
+        String path2 = ".\\testfolder\\testsavetwo.txt";
         File fileone = new File(path);
+        File filetwo = new File(path2);
         if(!fileone.exists()){
             fileone.getParentFile().mkdirs();
         }
@@ -70,9 +72,8 @@ class OpenSearchSaveTest {
         fr.close();
 
 
-
-        ReflectionTestUtils.invokeMethod(main,"openFile",null);
-        FileReader fre = new FileReader((File) ReflectionTestUtils.invokeMethod(main,"saveFile"));
+        main.openFile(fileone);
+        FileReader fre = new FileReader(main.saveFile(filetwo));
         BufferedReader bre = new BufferedReader(fre);
         String stractually = bre.readLine();
         bre.close();
@@ -80,7 +81,7 @@ class OpenSearchSaveTest {
 
         fileone.delete();
         //find and delete the txt you saved
-        ((File) ReflectionTestUtils.invokeMethod(main,"saveFile")).delete();
+        filetwo.delete();
 
 
 
@@ -116,7 +117,7 @@ class OpenSearchSaveTest {
         String want = "a";
         boolean result = str.contains(want);
 
-        ReflectionTestUtils.invokeMethod(main,"openFile");
+        main.openFile(filenew);
         boolean resultactually = ReflectionTestUtils.invokeMethod(far,"Search");
 
         filenew.delete();

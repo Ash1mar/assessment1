@@ -250,9 +250,9 @@ public class Main extends JFrame implements ActionListener{
         }else if (e.getSource() == item_exit) {
             this.dispose();
         }else if (e.getSource() == item_open) {
-                openFile();
+                openFile(openNew());
         }else if (e.getSource() == item_save) {
-            saveFile();
+            saveFile(saveNew());
         }else if (e.getSource() == item_cut) {
             edit_text_area.cut();
         } else if (e.getSource() == item_copy) {
@@ -264,17 +264,21 @@ public class Main extends JFrame implements ActionListener{
         }
     }
 
-    private File saveFile() {
+    public File saveNew() {
         File file = null;
-        int result ;
+        int result;
         fileChooser = new JFileChooser("C:\\");
         fileChooser.setApproveButtonToolTipText("Save"); // save
         fileChooser.setDialogTitle("Save File"); // set title
-        result = fileChooser.showOpenDialog(rootPane); // set Dialog's root View
+        result = fileChooser.showOpenDialog(rootPane);// set Dialog's root View
 
-        if(result == JFileChooser.APPROVE_OPTION) {
+        if (result == JFileChooser.APPROVE_OPTION) {
             file = fileChooser.getSelectedFile(); // click the agree button，fill the direction of the file
         }
+        return file;
+    }
+
+    public File saveFile(File file){
         try{
             OutputStreamWriter write = new OutputStreamWriter(new FileOutputStream(file),"UTF-8"); // coding
             BufferedWriter writer = new BufferedWriter(write);
@@ -290,20 +294,25 @@ public class Main extends JFrame implements ActionListener{
      * when click the New item, run the JFileChooser dialog
      * deal with the file reading and writing
      */
-    private File openFile() {
+    public File openNew() {
+
+        int result;
         File file = null;
-        int result ;
-        Document doc = null;
         fileChooser = new JFileChooser("C:\\");
         fileChooser.setApproveButtonToolTipText("OK"); // set the true text of the button Confirm.
         fileChooser.setDialogTitle("Open File"); // set title
         result = fileChooser.showOpenDialog(rootPane); // set Dialog's root View
 
-        if(result == JFileChooser.APPROVE_OPTION) {
+        if (result == JFileChooser.APPROVE_OPTION) {
             file = fileChooser.getSelectedFile(); // if click the confirm button，fil the direction of the file
-
         }
+        return file;
+    }
 
+
+
+    public File openFile(File file) {
+        Document doc = null;
         if(file.isFile() && file.exists()) {
             BufferedReader reader = null;
             try {
@@ -330,7 +339,6 @@ public class Main extends JFrame implements ActionListener{
                 e.printStackTrace();
                 TipDialog tmpDialog = new TipDialog(this,"Error File",true,"Wrong file name. Please check again!");
             }
-
 
         }
         return file;
