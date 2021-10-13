@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="texteditor.OpenSearchSaveTest" time="0.78" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="texteditor.OpenSearchSaveTest" time="0.219" tests="3" errors="3" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="15"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CN"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-15.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\23849\AppData\Local\Temp\surefire16123684430719894087\surefirebooter4796246714655332868.jar C:\Users\23849\AppData\Local\Temp\surefire16123684430719894087 2021-10-13T20-58-41_241-jvmRun1 surefire1590981804804527393tmp surefire_04219674811930365636tmp"/>
+    <property name="sun.java.command" value="C:\Users\23849\AppData\Local\Temp\surefire3790642897101502454\surefirebooter15579516604964114041.jar C:\Users\23849\AppData\Local\Temp\surefire3790642897101502454 2021-10-13T21-00-06_358-jvmRun1 surefire5952775156539871267tmp surefire_09552209602253969250tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\23849\Desktop\ass 1\assessment1\target\test-classes;C:\Users\23849\Desktop\ass 1\assessment1\target\classes;C:\Users\23849\.m2\repository\com\github\librepdf\openpdf\1.2.4\openpdf-1.2.4.jar;C:\Users\23849\.m2\repository\com\googlecode\juniversalchardet\juniversalchardet\1.0.3\juniversalchardet-1.0.3.jar;C:\Users\23849\.m2\repository\commons-io\commons-io\2.6\commons-io-2.6.jar;C:\Users\23849\.m2\repository\org\apache\commons\commons-compress\1.18\commons-compress-1.18.jar;C:\Users\23849\.m2\repository\org\apache\commons\commons-text\1.4\commons-text-1.4.jar;C:\Users\23849\.m2\repository\org\apache\commons\commons-lang3\3.7\commons-lang3-3.7.jar;C:\Users\23849\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\23849\.m2\repository\com\twelvemonkeys\imageio\imageio-tiff\3.4.1\imageio-tiff-3.4.1.jar;C:\Users\23849\.m2\repository\com\twelvemonkeys\imageio\imageio-core\3.4.1\imageio-core-3.4.1.jar;C:\Users\23849\.m2\repository\com\twelvemonkeys\imageio\imageio-metadata\3.4.1\imageio-metadata-3.4.1.jar;C:\Users\23849\.m2\repository\com\twelvemonkeys\common\common-lang\3.4.1\common-lang-3.4.1.jar;C:\Users\23849\.m2\repository\com\twelvemonkeys\common\common-io\3.4.1\common-io-3.4.1.jar;C:\Users\23849\.m2\repository\com\twelvemonkeys\common\common-image\3.4.1\common-image-3.4.1.jar;C:\Users\23849\.m2\repository\junit\junit\4.12\junit-4.12.jar;C:\Users\23849\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\23849\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.1\junit-jupiter-5.8.1.jar;C:\Users\23849\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\23849\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\23849\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\23849\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\23849\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.1\junit-jupiter-params-5.8.1.jar;C:\Users\23849\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\23849\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\23849\.m2\repository\org\springframework\spring-test\5.3.5\spring-test-5.3.5.jar;C:\Users\23849\.m2\repository\org\springframework\spring-core\5.3.5\spring-core-5.3.5.jar;C:\Users\23849\.m2\repository\org\springframework\spring-jcl\5.3.5\spring-jcl-5.3.5.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,8 +30,8 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="java.awt.headless" value="false"/>
-    <property name="surefire.real.class.path" value="C:\Users\23849\AppData\Local\Temp\surefire16123684430719894087\surefirebooter4796246714655332868.jar"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="surefire.real.class.path" value="C:\Users\23849\AppData\Local\Temp\surefire3790642897101502454\surefirebooter15579516604964114041.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="15.0.1+9-18"/>
@@ -56,7 +56,19 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="59.0"/>
   </properties>
-  <testcase name="search" classname="texteditor.OpenSearchSaveTest" time="0.633"/>
-  <testcase name="open" classname="texteditor.OpenSearchSaveTest" time="0.101"/>
-  <testcase name="save" classname="texteditor.OpenSearchSaveTest" time="0.034"/>
+  <testcase name="search" classname="texteditor.OpenSearchSaveTest" time="0.212">
+    <error type="java.awt.HeadlessException">java.awt.HeadlessException
+	at texteditor.OpenSearchSaveTest.search(OpenSearchSaveTest.java:93)
+</error>
+  </testcase>
+  <testcase name="open" classname="texteditor.OpenSearchSaveTest" time="0">
+    <error type="java.awt.HeadlessException">java.awt.HeadlessException
+	at texteditor.OpenSearchSaveTest.open(OpenSearchSaveTest.java:19)
+</error>
+  </testcase>
+  <testcase name="save" classname="texteditor.OpenSearchSaveTest" time="0">
+    <error type="java.awt.HeadlessException">java.awt.HeadlessException
+	at texteditor.OpenSearchSaveTest.save(OpenSearchSaveTest.java:50)
+</error>
+  </testcase>
 </testsuite>
