@@ -1,16 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: texteditor.OpenSearchSaveTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.219 s <<< FAILURE! - in texteditor.OpenSearchSaveTest
-search  Time elapsed: 0.212 s  <<< ERROR!
-java.awt.HeadlessException
-	at texteditor.OpenSearchSaveTest.search(OpenSearchSaveTest.java:93)
-
-open  Time elapsed: 0 s  <<< ERROR!
-java.awt.HeadlessException
-	at texteditor.OpenSearchSaveTest.open(OpenSearchSaveTest.java:19)
-
-save  Time elapsed: 0 s  <<< ERROR!
-java.awt.HeadlessException
-	at texteditor.OpenSearchSaveTest.save(OpenSearchSaveTest.java:50)
-
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.697 s - in texteditor.OpenSearchSaveTest
