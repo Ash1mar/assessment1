@@ -20,9 +20,9 @@ class OpenSearchSaveTest {
         Main main = new Main();
         String path = ".\\testfolder\\opentest.txt";
         File filenew = new File(path);
-        if(!filenew.exists()){
+        /*if(!filenew.exists()){
             filenew.getParentFile().mkdirs();
-        }
+        }*/
         filenew.createNewFile();
 
         // write
@@ -53,9 +53,9 @@ class OpenSearchSaveTest {
         String path2 = ".\\testfolder\\testsavetwo.txt";
         File fileone = new File(path);
         File filetwo = new File(path2);
-        if(!fileone.exists()){
+        /*if(!fileone.exists()){
             fileone.getParentFile().mkdirs();
-        }
+        }*/
         fileone.createNewFile();
 
         // write
@@ -95,9 +95,9 @@ class OpenSearchSaveTest {
         Main.FindAndReplace far = main.new FindAndReplace(area) ;
         String path = ".\\testfolder\\SearchTest.txt";
         File filenew = new File(path);
-        if(!filenew.exists()){
+        /*if(!filenew.exists()){
             filenew.getParentFile().mkdirs();
-        }
+        }*/
         filenew.createNewFile();
 
         // write
