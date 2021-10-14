@@ -16,7 +16,6 @@ class OpenSearchSaveTest {
 
     }
     @Test
-    @EnabledIfEnvironmentVariable(named = "DISPLAY",matches =":0")
     public void open() throws IOException {
         Main main = new Main();
         String path = ".\\testfolder\\opentest.txt";
@@ -90,6 +89,7 @@ class OpenSearchSaveTest {
         assertEquals(strexception,stractually);
     }
     @Test
+    @EnabledIfEnvironmentVariable(named = "DISPLAY",matches =":0")
     public void search() throws IOException {
         JTextPane area = new JTextPane();
         Main main = new Main();
