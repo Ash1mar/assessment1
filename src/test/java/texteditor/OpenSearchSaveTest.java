@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.AfterClass;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import javax.swing.*;
@@ -15,6 +16,7 @@ class OpenSearchSaveTest {
 
     }
     @Test
+    @EnabledIfEnvironmentVariable(named = "DISPLAY",matches =":0")
     public void open() throws IOException {
         Main main = new Main();
         String path = ".\\testfolder\\opentest.txt";
