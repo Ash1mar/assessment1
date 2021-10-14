@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.5" timestamp="2021-10-14T18:33:22.500">
+<file name="C:\Users\Peng\Desktop\new\assessment1\src\main\java\texteditor\PrintTest1.java">
+<violation beginline="29" endline="29" begincolumn="20" endcolumn="27" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="texteditor" class="PrintTest1" variable="tipLabel" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'tipLabel'.
+</violation>
+<violation beginline="93" endline="122" begincolumn="13" endcolumn="5" rule="UnusedFormalParameter" ruleset="Unused Code Rules" package="texteditor" class="PrintTest1" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedFormalParameter" priority="3">
+Avoid unused method parameters such as 'pf'.
+</violation>
+</file>
+</pmd>
