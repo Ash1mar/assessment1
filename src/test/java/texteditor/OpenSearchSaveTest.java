@@ -16,6 +16,7 @@ class OpenSearchSaveTest {
 
     }
     @Test
+    @EnabledIfEnvironmentVariable(named = "DISPLAY",matches =":0")
     public void open() throws IOException {
         Main main = new Main();
         String path = ".\\testfolder\\opentest.txt";
@@ -47,6 +48,7 @@ class OpenSearchSaveTest {
     }
 
     @Test
+    @EnabledIfEnvironmentVariable(named = "DISPLAY",matches =":0")
     public void save() throws IOException {
         Main main = new Main();
         String path = ".\\testfolder\\testsave.txt";
