@@ -52,7 +52,7 @@ When we want to use the New function, click file->new button and  the text edito
 
 
 
-When we want to use the Open function, click file->Open button. Then an interface will pop up and choose the file you want to open.
+When we want to use the Open function, click file->Open button. Then an interface will pop up and choose the file you want to open. You can open a .odt in this function.
 
 
 
@@ -85,6 +85,10 @@ When we want to use the Format Function. First, write the content in the text co
 
 
 When we want to use the About Function. Click Help->About button. The information of our team members will be displayed.
+
+
+
+The Time and Date is showing on the top of the interface.
 
 
 
@@ -139,6 +143,8 @@ Heqing Peng added pmd and the result of metrics analysis.
 There are also some interesting  points we want to mention.
 
 We add a function called Format which can change the format of contents. There are a few choices for the users.
+
+The highlight we use is actually a Rich Text Editor, so we can achieve our goal.
 
 About CI, we used Travis CI. We faced many exceptions about the test. At last we modified yml file which add a xvfb platform to the VM on Travis CI, this solution costs us a lot of time. We tried and committed many times about that.
 
